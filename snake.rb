@@ -44,6 +44,14 @@ class Snake
     end
   end
 
+  def x
+    head[0]
+  end
+
+  def y
+    head[1]
+  end
+
   private
 
   def new_coords(x, y)
@@ -66,6 +74,16 @@ class Game
     Square.new(x: @ball_x * GRID_SIZE, y: @ball_y * GRID_SIZE, size: GRID_SIZE, color: 'yellow')
     Text.new("Score: #{@score}", color: "green", x: 10, y: 10, size: 25)
   end
+
+  def snake_hit_ball?(x, y)
+    @ball_x == x && @ball_y == y
+  end
+
+  def record_hit
+    @score += 1
+    @ball_x = rand(GRID_WIDTH)
+    @ball_y = rand(GRID_HEIGHT)
+  end
 end
 
 snake = Snake.new
@@ -76,6 +94,10 @@ update do
   snake.move
   snake.draw
   game.draw
+
+  if game.snake_hit_ball?(snake.x, snake.y)
+    game.record_hit
+  end
 end
 
 on :key_down do |event|
