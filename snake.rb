@@ -88,7 +88,7 @@ class Game
     unless finished?
       Square.new(x: @ball_x * GRID_SIZE, y: @ball_y * GRID_SIZE, size: GRID_SIZE, color: 'yellow')
     end
-    Text.new("Score: #{@score}", color: "green", x: 10, y: 10, size: 25)
+    Text.new(text_message, color: "green", x: 10, y: 10, size: 25)
   end
 
   def snake_hit_ball?(x, y)
@@ -107,6 +107,16 @@ class Game
 
   def finished?
     @finished
+  end
+
+  private
+
+  def text_message
+    if finished?
+      "Game Over! Your Score Was: #{@score}. Press 'R' To Restart."
+    else
+      "Score: #{@score}"
+    end
   end
 end
 
