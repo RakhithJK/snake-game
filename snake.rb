@@ -147,8 +147,10 @@ on :key_down do |event|
     if snake.can_change_direction_to?(event.key)
       snake.direction = event.key
     end
+  elsif event.key == 'r'
+    snake = Snake.new
+    game = Game.new
   end
 end
-
 
 show
