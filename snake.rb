@@ -1,6 +1,6 @@
 require 'ruby2d'
 
-set background: 'navy'
+set background: '#232946'
 set fps_cap: 15
 
 GRID_SIZE = 20
@@ -18,7 +18,7 @@ class Snake
 
   def draw
     @positions.each do |position|
-      Square.new(x: position[0] * GRID_SIZE, y: position[1] * GRID_SIZE, size: GRID_SIZE - 1, color: 'white')
+      Square.new(x: position[0] * GRID_SIZE, y: position[1] * GRID_SIZE, size: GRID_SIZE - 1, color: '#eebbc3')
     end
   end
 
@@ -86,9 +86,9 @@ class Game
 
   def draw
     unless finished?
-      Square.new(x: @ball_x * GRID_SIZE, y: @ball_y * GRID_SIZE, size: GRID_SIZE, color: 'yellow')
+      Square.new(x: @ball_x * GRID_SIZE, y: @ball_y * GRID_SIZE, size: GRID_SIZE, color: '#fffffe')
     end
-    Text.new(text_message, color: "green", x: 10, y: 10, size: 25)
+    Text.new(text_message, color: '#b8c1ec', x: 10, y: 10, size: 25)
   end
 
   def snake_hit_ball?(x, y)
